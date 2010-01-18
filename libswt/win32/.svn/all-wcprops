@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnkettleroot/!svn/ver/11081/Kettle/trunk/libswt/win32
+END
+jaybird21.dll
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnkettleroot/!svn/ver/3016/Kettle/trunk/libswt/win32/jaybird21.dll
+END
+infobright_jni.dll
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnkettleroot/!svn/ver/11081/Kettle/trunk/libswt/win32/infobright_jni.dll
+END
+ntlmauth.dll
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnkettleroot/!svn/ver/3016/Kettle/trunk/libswt/win32/ntlmauth.dll
+END
+JtdsXA.dll
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnkettleroot/!svn/ver/10339/Kettle/trunk/libswt/win32/JtdsXA.dll
+END
+swt.jar
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnkettleroot/!svn/ver/4138/Kettle/trunk/libswt/win32/swt.jar
+END
+infobright_jni_64bit.dll
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnkettleroot/!svn/ver/11081/Kettle/trunk/libswt/win32/infobright_jni_64bit.dll
+END

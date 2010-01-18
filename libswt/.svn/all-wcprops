@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnkettleroot/!svn/ver/11121/Kettle/trunk/libswt
+END
+common.jar
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnkettleroot/!svn/ver/4138/Kettle/trunk/libswt/common.jar
+END
+jface.jar
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnkettleroot/!svn/ver/4138/Kettle/trunk/libswt/jface.jar
+END
+commands.jar
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnkettleroot/!svn/ver/4138/Kettle/trunk/libswt/commands.jar
+END
+runtime.jar
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnkettleroot/!svn/ver/4138/Kettle/trunk/libswt/runtime.jar
+END
