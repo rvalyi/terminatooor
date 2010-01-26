@@ -341,7 +341,8 @@ public class ScriptValuesMod extends BaseStep implements StepInterface, ScriptVa
         throw new KettleValueException(BaseMessages.getString(PKG, "ScriptValuesMod.Log.UnexpectedeError"), e); //$NON-NLS-1$ //$NON-NLS-2$				
       }
       
-      data.script.eval(data.scope);
+	  data.cx.eval(strTransformScript, data.scope);
+      //data.script.eval(data.scope);
 
       if (bFirstRun) {
         bFirstRun = false;
