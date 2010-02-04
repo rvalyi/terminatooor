@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="TerminatOOOR"
+   iconfile="TerminatOOOR.png"
+   description="TerminatOOOR.jruby"
+   tooltip="TerminatOOOR - OpenERP pull/push JRuby plugin"
+   category="Transformation"
+   classname="com.akretion.kettle.steps.terminatooor.ScriptValuesMetaMod">
+   <libraries>
+    <library name="terminatooor.jar"/>
+    <library name="jruby-complete-ooor.jar"/>
+   </libraries>
+</plugin>
