@@ -41,6 +41,7 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Vector;
 
 import org.eclipse.swt.SWT;
@@ -130,7 +131,6 @@ import org.pentaho.di.ui.core.widget.TableView;
 import org.pentaho.di.ui.spoon.Spoon;
 import org.pentaho.di.ui.trans.dialog.TransPreviewProgressDialog;
 import org.pentaho.di.ui.trans.step.BaseStepDialog;
-import org.pentaho.di.ui.trans.steps.scriptvalues_mod.ScriptValuesHelp;
 
 import com.akretion.kettle.steps.terminatooor.ScriptValuesAddedFunctions;
 import com.akretion.kettle.steps.terminatooor.ScriptValuesMetaMod;
@@ -523,7 +523,7 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 		wStepname.addSelectionListener( lsDef );
 				
 		// Detect X or ALT-F4 or something that kills this window...
-		shell.addShellListener(	new ShellAdapter() { public void shellClosed(ShellEvent e) { cancel(); } } );
+		shell.addShellListener(	new ShellAdapter() { public void shellClosed(ShellEvent e) { if (!cancel()) { e.doit=false; } } } );
 		
 		folder.addCTabFolder2Listener(new CTabFolder2Adapter() {
 			public void close(CTabFolderEvent event) {
@@ -915,11 +915,24 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 			else if(cTabs[i].getImage().equals(imageActiveEndScript)) strActiveEndScript = cTabs[i].getText();
 		}
 	}
-	private void cancel(){
-		stepname=null;
-		input.setChanged(changed);
-		dispose();
-	}
+	
+    private boolean cancel()
+    {
+    	if (input.hasChanged()) {
+    		MessageBox box = new MessageBox(shell, SWT.YES | SWT.NO | SWT.APPLICATION_MODAL);
+    		box.setText(BaseMessages.getString(PKG, "ScriptValuesModDialog.WarningDialogChanged.Title"));
+    		box.setMessage(BaseMessages.getString(PKG, "ScriptValuesModDialog.WarningDialogChanged.Message", Const.CR));
+    		int answer = box.open();
+    		
+    		if (answer==SWT.NO) {
+    			return false;
+    		}	
+    	}
+        stepname = null;
+        input.setChanged(changed);
+        dispose();
+        return true;
+    }
 	
 	private void getInfo(ScriptValuesMetaMod meta) {
 		meta.setCompatible( wCompatible.getSelection() );
@@ -1088,6 +1101,7 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 			    // Generate a new test transformation...
 			    //
 			    TransMeta transMeta = new TransMeta();
+                transMeta.setName(wStepname.getText()+" - PREVIEW"); // $NON-NLS-1$
 			    transMeta.addStep(genStep);
 			    transMeta.addStep(scriptStep);
 			    transMeta.addTransHop(hop);
@@ -1119,8 +1133,17 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 		                }
 		            }
 		            
-		            PreviewRowsDialog prd =new PreviewRowsDialog(shell, transMeta, SWT.NONE, wStepname.getText(), progressDialog.getPreviewRowsMeta(wStepname.getText()), progressDialog.getPreviewRows(wStepname.getText()), loggingText);
-		            prd.open();
+                    RowMetaInterface previewRowsMeta = progressDialog.getPreviewRowsMeta(wStepname.getText());
+                    List<Object[]> previewRows = progressDialog.getPreviewRows(wStepname.getText());
+                    
+                    if (previewRowsMeta!=null && previewRows!=null && previewRows.size()>0) {
+	                    PreviewRowsDialog prd = new PreviewRowsDialog(shell, 
+	                    		transMeta, SWT.NONE, wStepname.getText(), 
+	                    		previewRowsMeta, 
+	                    		previewRows, 
+	                    		loggingText);
+	                    prd.open();
+                    }
 			    }
 
 			    return true;

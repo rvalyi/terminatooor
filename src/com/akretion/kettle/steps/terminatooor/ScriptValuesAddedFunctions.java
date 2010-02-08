@@ -71,6 +71,7 @@ import org.pentaho.di.core.row.RowDataUtil;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.variables.VariableSpace;
 import org.pentaho.di.core.vfs.KettleVFS;
+import org.pentaho.di.trans.step.StepInterface;
 
 
 public class ScriptValuesAddedFunctions {
@@ -259,7 +260,7 @@ public class ScriptValuesAddedFunctions {
 		if(ArgList.length==1){
 			try{
 				Object scmO = actualObject.get("_step_");
-				ScriptValuesModInterface scm = (ScriptValuesModInterface) scmO;
+				StepInterface scm = (StepInterface) scmO;
 				String strType = (String) ArgList[0];
 				
 				if(strType.toLowerCase().equals("i")) return (double)scm.getLinesInput();
@@ -1530,9 +1531,9 @@ public class ScriptValuesAddedFunctions {
 		    try{
 				Object scmo = actualObject.get("_step_");
 				Object scmO = scmo;
-				if ( scmO instanceof ScriptValuesModInterface)
+				if ( scmO instanceof StepInterface)
 				{
-					ScriptValuesModInterface scm = (ScriptValuesModInterface)scmO;			
+					StepInterface scm = (StepInterface)scmO;			
 
   			        sArg1 = (String) ArgList[0];
 				    sArg2 = (String) ArgList[1];
