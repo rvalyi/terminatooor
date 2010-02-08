@@ -4,7 +4,7 @@
    iconfile="TerminatOOOR.png"
    description="TerminatOOOR.jruby"
    tooltip="TerminatOOOR - OpenERP pull/push JRuby plugin"
-   category="Transformation"
+   category="Transform"
    classname="com.akretion.kettle.steps.terminatooor.ScriptValuesMetaMod">
    <libraries>
     <library name="terminatooor.jar"/>
