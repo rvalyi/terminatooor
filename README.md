@@ -6,7 +6,7 @@ TerminatOOOR - Brute Force your OpenERP data integration with [OOOR](http://gith
         <td><b>BY</b></td>
         <td><a href="http://www.akretion.com" title="Akretion - open source to spin the world"><img src="http://sites.google.com/site/assetserversite/_/rsrc/1257126470309/home/akretion_s.png" width="228px" height="124px" /></a></td>
         <td>
-A JRuby JSR223 intergation of the [OOOR](http://github.com/rvalyi/ooor) [OpenERP](http://openerp.com/) connector inside the  [Kettle](http://www.pentaho.com/products/demos/PDI_overview/PDI_overview.html) ETL
+A JRuby JSR223 intergation of the OOOR OpenERP connector inside the Kettle ETL
         </td>
     </tr>
 </table>
