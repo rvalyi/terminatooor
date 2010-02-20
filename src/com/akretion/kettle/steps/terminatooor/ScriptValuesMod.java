@@ -261,9 +261,8 @@ public class ScriptValuesMod extends BaseStep implements StepInterface {
         try {
           // Checking for StartScript
           if (strStartScript != null && strStartScript.length() > 0) {
-			//CompiledScript startScript = ((Compilable) data.cx).compile(strStartScript);
-			//startScript.eval(data.scope);
-			data.cx.eval(strStartScript, data.scope);
+			CompiledScript startScript = ((Compilable) data.cx).compile(strStartScript);
+			startScript.eval(data.scope);
             if (log.isDetailed())
               logDetailed(("Start Script found!"));
           } else {
@@ -342,8 +341,7 @@ public class ScriptValuesMod extends BaseStep implements StepInterface {
         throw new KettleValueException(BaseMessages.getString(PKG, "ScriptValuesMod.Log.UnexpectedeError"), e); //$NON-NLS-1$ //$NON-NLS-2$				
       }
       
-	  data.cx.eval(strTransformScript, data.scope);
-      //data.script.eval(data.scope);
+      data.script.eval(data.scope);
 
       if (bFirstRun) {
         bFirstRun = false;
