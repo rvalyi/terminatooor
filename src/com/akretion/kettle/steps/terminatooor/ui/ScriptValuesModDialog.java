@@ -225,7 +225,7 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 	
 	private ScriptValuesMetaMod input;
 	private ScriptValuesHelp scVHelp;
-	private ScriptValuesHighlight lineStyler = new ScriptValuesHighlight();
+	//private ScriptValuesHighlight lineStyler = new ScriptValuesHighlight();
 	private Button wCompatible;
 	
     private TreeItem iteminput;
@@ -703,8 +703,8 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 		wScript.addModifyListener(lsMod);
 		
 		// Text Higlighting
-		lineStyler = new ScriptValuesHighlight(ScriptValuesAddedFunctions.jsFunctionList);
-		wScript.addLineStyleListener(lineStyler);
+		//lineStyler = new ScriptValuesHighlight(ScriptValuesAddedFunctions.jsFunctionList);
+		//wScript.addLineStyleListener(lineStyler);
  		item.setControl(wScript);
  		
  		// Adding new Item to Tree
