@@ -942,26 +942,20 @@ public class ScriptValuesMetaMod extends BaseStepMeta implements StepMetaInterfa
 	 * @return
 	 */
 	public static ScriptEngine createNewScriptEngine(String stepName) {
-		System.out.println("111111" + stepName);
 		System.setProperty("org.jruby.embed.localvariable.behavior", "persistent");//required for JRuby, transparent for others
 		System.setProperty("org.jruby.embed.localcontext.scope", "threadsafe");
-		System.out.println("2222222");
 		ScriptEngineManager manager = new ScriptEngineManager();
 		String extension;
-		System.out.println("3333333");
 		if(stepName.indexOf("jruby") > 0 || stepName.indexOf("ruby") > 0 || stepName.indexOf(".rb") > 0) {
-			System.out.println("444444");
 			extension = "jruby";
 		} else if(stepName.indexOf("jython") > 0 || stepName.indexOf("python") > 0 || stepName.indexOf(".py") > 0){
 			extension = "jython";
 		} else if(stepName.indexOf(".") > 0){
-			System.out.println("5555555");
 			String[] strings = stepName.split("\\.");
 			extension = strings[strings.length > 0 ? 1 : 0];//skip the script number extension
 		} else {
 			extension = "jruby";
 		}
-		System.out.println("666666");
 		System.out.println("script name= " + stepName +"; extension name= " + extension);
 		ScriptEngine scriptEngine = manager.getEngineByName(extension);
 		if (scriptEngine == null) {//falls back to Javascript
