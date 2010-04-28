@@ -137,6 +137,13 @@ import com.akretion.kettle.steps.terminatooor.ScriptValuesMetaMod;
 import com.akretion.kettle.steps.terminatooor.ScriptValuesModDummy;
 import com.akretion.kettle.steps.terminatooor.ScriptValuesScript;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 
 public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogInterface
 {
@@ -166,8 +173,8 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 	
 	private Text		wlHelpLabel;
 	
-	private Button wVars, wTest;
-	private Listener lsVars, lsTest;
+	private Button wVars, wTest, wConsole;
+	private Listener lsVars, lsTest, lsConsole;
 	
 	// private Button wHelp;
 	
@@ -497,14 +504,17 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 		wTest.setText(BaseMessages.getString(PKG, "ScriptValuesDialogMod.TestScript.Button")); //$NON-NLS-1$
 		wCancel=new Button(shell, SWT.PUSH);
 		wCancel.setText(BaseMessages.getString(PKG, "System.Button.Cancel")); //$NON-NLS-1$
+		wConsole=new Button(shell, SWT.PUSH);
+		wConsole.setText(BaseMessages.getString(PKG, "Launch Ruby Test Console"));
 		
-		setButtonPositions(new Button[] { wOK, wCancel ,  wVars, wTest }, margin, null);
+		setButtonPositions(new Button[] { wOK, wCancel ,  wVars, wTest, wConsole }, margin, null);
 
 
 		// Add listeners
 		lsCancel   = new Listener() { public void handleEvent(Event e) { cancel();          } };
 		//lsGet      = new Listener() { public void handleEvent(Event e) { get();             } };
 		lsTest     = new Listener() { public void handleEvent(Event e) { newTest(); } };
+		lsConsole     = new Listener() { public void handleEvent(Event e) { newConsole(); } };
 		lsVars     = new Listener() { public void handleEvent(Event e) { test(true, true);  } };
 		lsOK       = new Listener() { public void handleEvent(Event e) { ok();              } };
 		lsTree	   = new Listener() { public void handleEvent(Event e) { treeDblClick(e);       } };
@@ -513,6 +523,7 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 		wCancel.addListener(SWT.Selection, lsCancel);
 		//wGet.addListener   (SWT.Selection, lsGet   );
 		wTest.addListener (SWT.Selection, lsTest  );
+		wConsole.addListener (SWT.Selection, lsConsole  );
 		wVars.addListener  (SWT.Selection, lsVars  );
 		wOK.addListener    (SWT.Selection, lsOK    );
 		wTree.addListener(SWT.MouseDoubleClick, lsTree);
@@ -1011,6 +1022,24 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 	public boolean test()
 	{
 		return test(false, false);
+	}
+	
+	private boolean newConsole() {
+		ScriptEngineManager manager = new ScriptEngineManager();
+		final ScriptEngine scriptEngine = manager.getEngineByName("jruby");
+        final Runnable runnable = new Runnable()
+        {
+            public void run()
+            {
+				InputStreamReader reader = new InputStreamReader(this.getClass().getResourceAsStream( "jirb_swing.rb" ));
+				try {
+					scriptEngine.eval(reader);
+				} catch(ScriptException ex) {
+				}
+            }
+        };
+        new Thread(runnable).start();
+		return true;
 	}
 	
 	private boolean newTest() {
