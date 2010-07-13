@@ -8,6 +8,5 @@
    classname="com.akretion.kettle.steps.terminatooor.ScriptValuesMetaMod">
    <libraries>
     <library name="terminatooor.jar"/>
-    <library name="jruby-complete-ooor.jar"/>
    </libraries>
 </plugin>
