@@ -1,0 +1,5 @@
+name;country
+Akretion;Brazil
+Openlabs;India
+CampToCamp;Switzerland
+ZikzakMedia;Spain

@@ -1,0 +1,42 @@
+id;name;country;debit;credit
+3;Agrolait;Belgium; 0.0; 0.0
+67;Akretion;undef; 0.0; 0.0
+71;Akretion;undef; 0.0; 0.0
+2;ASUStek;Taiwan; 0.0; 0.0
+7;Axelor;France; 0.0; 165.0
+17;BalmerInc S.A.;Belgium; 0.0; 0.0
+9;Bank Wealthy and sons;France; 0.0; 0.0
+4;Camptocamp;undef; 0.0; 0.0
+69;CampToCamp;undef; 0.0; 0.0
+73;CampToCamp;undef; 0.0; 0.0
+32;Capegemini;undef; 0.0; 0.0
+47;Capegemini;undef; 0.0; 0.0
+42;Capegemini;undef; 0.0; 0.0
+36;Capegemini;undef; 0.0; 0.0
+28;Capegemini;undef; 0.0; 0.0
+62;Capegemini;undef; 0.0; 0.0
+57;Capegemini;undef; 0.0; 0.0
+52;Capegemini;undef; 0.0; 0.0
+20;Centrale d'achats BML;undef; 0.0; 0.0
+10;China Export;China; 0.0; 0.0
+11;Distrib PC;Belgium; 0.0; 0.0
+12;Ecole de Commerce de Liege;Belgium; 0.0; 0.0
+13;Elec Import;Belgium; 0.0; 0.0
+19;Leclerc;undef; 0.0; 0.0
+21;Magazin BML 1;undef; 0.0; 0.0
+14;Maxtor;China; 0.0; 0.0
+16;Mediapole SPRL;Belgium; 0.0; 0.0
+1;OpenERP S.A.;Belgium; 0.0; 0.0
+68;Openlabs;undef; 0.0; 0.0
+72;Openlabs;undef; 0.0; 0.0
+15;Seagate;undef; 0.0; 0.0
+5;Syleam;France; 0.0; 0.0
+18;Tecsas;France; 0.0; 0.0
+40;The Poste;undef; 0.0; 0.0
+6;Thymbra;undef; 0.0; 0.0
+8;Tiny AT Work;undef; 0.0; 0.0
+23;Tiny Shop 1;undef; 0.0; 0.0
+24;Tiny Shop 2;undef; 0.0; 0.0
+22;Université de Liège;undef; 0.0; 0.0
+70;ZikzakMedia;undef; 0.0; 0.0
+74;ZikzakMedia;undef; 0.0; 0.0
