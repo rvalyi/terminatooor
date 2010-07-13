@@ -507,7 +507,7 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 		wConsole=new Button(shell, SWT.PUSH);
 		wConsole.setText(BaseMessages.getString(PKG, "ScriptValuesDialogMod.LaunchRubyTestConsole")); //$NON-NLS-1$
 		
-		setButtonPositions(new Button[] { wOK, wCancel ,  wVars, wTest, wConsole }, margin, null);
+		setButtonPositions(new Button[] { wOK, wCancel , wConsole }, margin, null);
 
 
 		// Add listeners
