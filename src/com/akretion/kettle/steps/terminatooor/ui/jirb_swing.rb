@@ -34,7 +34,6 @@ frame.set_size(800, 700)
 frame.content_pane.add(pane)
 tar = org.jruby.demo.TextAreaReadline.new(text,
       " Welcome to the JRuby IRB Console [#{JRUBY_VERSION}] \n\n")
-JRuby.objectspace = true # useful for code completion
 tar.hook_into_runtime_with_streams(JRuby.runtime)
 
 # We need to show the frame on EDT,
