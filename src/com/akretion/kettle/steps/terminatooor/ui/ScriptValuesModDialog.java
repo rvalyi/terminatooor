@@ -505,7 +505,7 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 		wCancel=new Button(shell, SWT.PUSH);
 		wCancel.setText(BaseMessages.getString(PKG, "System.Button.Cancel")); //$NON-NLS-1$
 		wConsole=new Button(shell, SWT.PUSH);
-		wConsole.setText(BaseMessages.getString(PKG, "Launch Ruby Test Console"));
+		wConsole.setText(BaseMessages.getString(PKG, "ScriptValuesDialogMod.LaunchRubyTestConsole")); //$NON-NLS-1$
 		
 		setButtonPositions(new Button[] { wOK, wCancel ,  wVars, wTest, wConsole }, margin, null);
 
@@ -1025,14 +1025,15 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 	}
 	
 	private boolean newConsole() {
-		ScriptEngineManager manager = new ScriptEngineManager();
-		final ScriptEngine scriptEngine = manager.getEngineByName("jruby");
+        ScriptEngineManager manager = new ScriptEngineManager();
+        final ScriptEngine scriptEngine = manager.getEngineByName("jruby");
         final Runnable runnable = new Runnable()
         {
             public void run()
             {
 				InputStreamReader reader = new InputStreamReader(this.getClass().getResourceAsStream( "jirb_swing.rb" ));
 				try {
+					scriptEngine.eval("CLOSE_OPERATION=nil");
 					scriptEngine.eval(reader);
 				} catch(ScriptException ex) {
 				}
