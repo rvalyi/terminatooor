@@ -25,6 +25,8 @@
 	  	
 	    <tstamp/>
 	    <mkdir dir="${classes}"/>
+		<mkdir dir="${classes}/jruby-ooor"/>
+		<mkdir dir="${classes}/terminatooor"/>
 	    <mkdir dir="${lib}"/>
 	    <mkdir dir="${distrib}"/>
 	  </target>
@@ -38,7 +40,7 @@
 	  <target name="compile" depends="init" description="compile the source " >
 	  	<echo>Compiling TerminatOOOR Plugin...</echo>
 	    <javac srcdir="${src}" 
-	    	   destdir="${classes}" source="${javac.version}" target="${javac.version}">
+	    	   destdir="${classes}/terminatooor" source="${javac.version}" target="${javac.version}">
 
 	    	<classpath id="cpath">
 				<fileset dir="${libext}" 		includes="*.jar"/>
@@ -55,11 +57,28 @@
 
 	  <target name="copy" depends="compile" description="copy images etc to classes directory" >
 	  	<echo>Copying images etc to classes directory...</echo>
-	    <copy todir="${classes}">
+		
+	    <copy todir="${classes}/terminatooor">
 	    	<fileset 
 	    		dir="${src}" 
 	    		includes="**/*.png,**/*.xml,**/*.properties,**/*.rb"/>
-	  	    </copy>
+		</copy>
+		
+		<echo>Preparing JRuby bundle with OOOR Gem...</echo>
+		
+	    <unzip dest="${classes}/jruby-ooor">
+		  <fileset dir="${libext}/jruby">
+			  <include name="jruby-*.jar"/>
+		  </fileset>
+	    </unzip>
+	  
+	    <copy todir="${classes}/jruby-ooor/META-INF/jruby.home/lib/ruby/gems">
+	    	<fileset dir="${libext}/gems" includes="**/*.*"/>
+		</copy>
+		
+		<copy file="${classes}/terminatooor/com/akretion/OOORConsole.class" tofile="${classes}/jruby-ooor/com/akretion/OOORConsole.class" overwrite="true" />
+		<copy file="${classes}/terminatooor/com/akretion/kettle/steps/terminatooor/ui/jirb_swing.rb" tofile="${classes}/jruby-ooor/com/akretion/jirb_swing.rb" overwrite="true" />
+		
 	  </target>
 			
 	  <!--
@@ -70,10 +89,21 @@
 		
 	  <target name="terminatooor" depends="compile, copy" description="generate the TerminatOOOR Plugin library terminatooor.jar">
 	  	<echo>Generating the Kettle library terminatooor.jar ...</echo>
-	  	<jar 
+		
+	  	<jar
+	    	jarfile="${lib}/jruby-ooor.jar" 
+	    	basedir="${classes}/jruby-ooor" 
+	    	includes="**/*">
+			<manifest>
+				<attribute name="Main-Class" value="com.akretion.OOORConsole"/>
+			</manifest>
+		</jar>
+		
+	  	<jar
 	    	jarfile="${lib}/terminatooor.jar" 
-	    	basedir="${classes}" 
-	    	includes="**/*"/>	 
+	    	basedir="${classes}/terminatooor" 
+	    	includes="**/*">
+		</jar>
 	  </target>
 
 	  <!--
