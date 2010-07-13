@@ -31,6 +31,7 @@ Using it
 
 First you better learn a bit about [Kettle](http://kettle.pentaho.org/) and [OOOR](http://github.com/rvalyi/ooor).
 Installation:
+
 *  Download Kettle 4 for instance from [here](http://ci.pentaho.com/view/Data%20Integration/job/Kettle/lastSuccessfulBuild/artifact/Kettle/)
 *  download the [terminatoor.zip](http://github.com/rvalyi/terminatooor/downloads) file or from source using GIT
 *  copy the jruby-ooor.jar file inside the Kettle libext directory (a classpath trouble with JSR223 and multiple classloaders force us to do that trick)
