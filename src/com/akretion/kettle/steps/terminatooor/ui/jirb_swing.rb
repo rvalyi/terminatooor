@@ -29,8 +29,8 @@ text.foreground = Color.new(0xa4, 0x00, 0x00)
 pane = javax.swing.JScrollPane.new
 pane.viewport_view = text
 frame = JFrame.new('JRuby IRB Console (tab will autocomplete)')
-frame.default_close_operation = JFrame::EXIT_ON_CLOSE
-frame.set_size(700, 600)
+frame.default_close_operation = JFrame::EXIT_ON_CLOSE if CLOSE_OPERATION;
+frame.set_size(800, 700)
 frame.content_pane.add(pane)
 tar = org.jruby.demo.TextAreaReadline.new(text,
       " Welcome to the JRuby IRB Console [#{JRUBY_VERSION}] \n\n")
@@ -49,6 +49,7 @@ class FrameBringer
   end
   def run
     @frame.visible = true
+	puts "You can start an Ooor connector by typing:\nrequire 'rubygems';require 'ooor';Ooor.new({:url => 'http://localhost:8069/xmlrpc', :database => 'mybase', :username => 'admin', :password => 'admin'})"
   end
 end
 
