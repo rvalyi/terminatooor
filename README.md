@@ -29,9 +29,10 @@ We are here leveraging futuristic technology: we run the [OOOR](http://github.co
 Using it
 ------------
 
-First you better learn a bit about [Kettle](http://kettle.pentaho.org/) and [OOOR](http://github.com/rvalyi/ooor).
+First you better learn a bit about [Kettle](http://kettle.pentaho.org/) (also see démos of [the Kettle ETL](http://www.pentaho.com/products/demos/PDI_overview/PDI_overview.html) and its [AgileBIT plugin](http://www.osbi.fr/?p=1045)) and [OOOR](http://github.com/rvalyi/ooor).
 Installation:
 
+*  Watch a demo: [http://www.youtube.com/watch?v=gH4AN5p9YKI&fmt=22](http://www.youtube.com/watch?v=gH4AN5p9YKI&fmt=22)
 *  Download Kettle 4 for instance from [here](http://ci.pentaho.com/view/Data%20Integration/job/Kettle/lastSuccessfulBuild/artifact/Kettle/)
 *  download the [terminatoor.zip](http://github.com/rvalyi/terminatooor/downloads) file or from source using GIT
 *  copy the jruby-ooor.jar file inside the Kettle libext directory (a classpath trouble with JSR223 and multiple classloaders force us to do that trick)
@@ -39,13 +40,14 @@ Installation:
 *  start Kettle, this can be done with the sh spoon.sh command inside your Kettle directory on Linux for instance
 *  drag and drop the "TerminatOOOR" transfo from the transfo design panel listing the available plugins/transfos
 *  learn how to use the TerminatOOOR step: you'll have to enter simple Ruby scripts and also instanciate OOOR connectors properly
+*  there is a work in progress comprehensive documentation beeing written [here](http://docs.google.com/View?docID=0ASvZhKivgdfZZGY5am4yNWJfNDJocmZ2NXNmZg&revision=_latest)
 
 
 *  hint #1: usually we avoid instanciating an OOOR connector for each Kettle line, so we create a second tab (right click on the top of the current tab) and add a second tab. With an other right click, we set that second script as a "StartScript" that
 will be executed only once. This is where we will instanciate an OOOR connector (this is required in each TerminatOOOR step). Then inside the main script running for each line, we can use OOOR models as we want.
 *  hint #2: for extracting OpenERP resources, a good approach is to make a first search inside a first TerminatOOOR that run only once cause he his connected to a "RowGenerator" of only 1 row. Then we stores those ids in a String properly. Finally,
 we use a split transformation to transform that list of ids as a String into several Kettle lines: this allows us to read each resource individually in a last TerminatOOOR step!
-*  hint #3: learn the two read and write included samples
+*  hint #3: learn the two read and write [included samples](http://github.com/rvalyi/terminatooor/tree/master/terminatooor/samples/)
 
 
 
