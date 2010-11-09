@@ -263,12 +263,12 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 			imageArrowOrange = guiresource.getImage("ui/images/arrowOrange.png");
 			imageInputFields = guiresource.getImage("ui/images/inSmall.png");
 			imageOutputFields = guiresource.getImage("ui/images/outSmall.png");
-			imageActiveScript = guiresource.getImage("ui/images/faScript.png");
+			imageActiveScript = guiresource.getImage("plugins/steps/termintatooor/images/faScript.png");
 			imageInactiveScript = guiresource.getImage("ui/images/hide-inactive.png");
-			imageActiveStartScript = guiresource.getImage("ui/images/SQLbutton.png");
-			imageActiveEndScript = guiresource.getImage("ui/images/edfScript.png");
-			imageDeleteScript = guiresource.getImage("ui/images/deleteSmall.png");
-			imageAddScript = guiresource.getImage("ui/images/addSmall.png");
+			imageActiveStartScript = guiresource.getImage("plugins/steps/termintatooor/images/sScript.png");
+			imageActiveEndScript = guiresource.getImage("plugins/steps/termintatooor/images/edfScript.png");
+			imageDeleteScript = guiresource.getImage("plugins/steps/termintatooor/images/deleteSmall.png");
+			imageAddScript = guiresource.getImage("plugins/steps/termintatooor/images/addSmall.png");
 			imageDuplicateScript = guiresource.getImage("ui/images/copySmall.png");
 		}catch(Exception e){
 			imageActiveScript = new Image(parent.getDisplay(), 16, 16);
