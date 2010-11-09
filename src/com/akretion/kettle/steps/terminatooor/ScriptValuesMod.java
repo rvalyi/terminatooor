@@ -261,6 +261,9 @@ public class ScriptValuesMod extends BaseStep implements StepInterface {
         try {
           // Checking for StartScript
           if (strStartScript != null && strStartScript.length() > 0) {
+            strStartScript += "\n$:.unshift File.dirname(__FILE__) + '/plugins/steps/termintatooor/custom_ruby_libs/lib'";
+            strStartScript += "\nENV['GEM_HOME'] = File.dirname(__FILE__) + '/plugins/steps/termintatooor/custom_ruby_libs'";
+            strStartScript += "\nrequire 'rubygems';require 'ooor'";
 			CompiledScript startScript = ((Compilable) data.cx).compile(strStartScript);
 			startScript.eval(data.scope);
             if (log.isDetailed())

@@ -2,6 +2,18 @@ require 'jruby'
 require 'irb'
 require 'irb/completion'
 
+#in case jruby-ooor is launch from the TerminatOOOR plugin directory:
+strStartScript += "\n$:.unshift File.dirname(__FILE__) + '/custom_ruby_libs/lib'";
+strStartScript += "\nENV['GEM_HOME'] = File.dirname(__FILE__) + '/custom_ruby_libs'";
+
+#in case it's launched from Kettle libext:
+strStartScript += "\n$:.unshift File.dirname(__FILE__) + '../plugins/steps/termintatooor/custom_ruby_libs/lib'";
+strStartScript += "\nENV['GEM_HOME'] = File.dirname(__FILE__) + '../plugins/steps/termintatooor/custom_ruby_libs'";
+
+require 'rubygems'
+require 'ooor'
+
+
 if ARGV.empty?
   # default options, esp. useful for jrubyw
   ARGV << '--readline' << '--prompt' << 'inf-ruby'
@@ -48,7 +60,7 @@ class FrameBringer
   end
   def run
     @frame.visible = true
-	puts "You can start an Ooor connector by typing:\nrequire 'rubygems';require 'ooor';Ooor.new({:url => 'http://localhost:8069/xmlrpc', :database => 'mybase', :username => 'admin', :password => 'admin'})"
+	puts "You can start an Ooor connector by typing:\nOoor.new({:url => 'http://localhost:8069/xmlrpc', :database => 'mybase', :username => 'admin', :password => 'admin'})"
   end
 end
 
