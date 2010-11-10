@@ -81,6 +81,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
@@ -174,7 +175,7 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 	private Text		wlHelpLabel;
 	
 	private Button wVars, wTest, wConsole;
-	private Listener lsVars, lsTest, lsConsole;
+	private Listener lsVars, lsConsole;
 	
 	// private Button wHelp;
 	
@@ -189,6 +190,7 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 	// private Listener	lsHelp;
 	private FormData 	fdHelpLabel;
 	
+	private Image imageLogo=null;
 	private Image imageActiveScript=null;
 	private Image imageInactiveScript=null;
 	private Image imageActiveStartScript=null;
@@ -322,7 +324,11 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 		
 		int middle = props.getMiddlePct();
 		int margin = Const.MARGIN;
-		
+
+		imageLogo = guiresource.getImage("plugins/steps/termintatooor/images/ooor_m.jpg");
+		Label logo=new Label (shell, SWT.LEFT);
+		logo.setSize(134, 55);
+		logo.setImage(imageLogo);
 		// Filename line
 		wlStepname=new Label(shell, SWT.RIGHT);
 		wlStepname.setText(BaseMessages.getString(PKG, "ScriptValuesDialogMod.Stepname.Label")); //$NON-NLS-1$
@@ -507,10 +513,8 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 
 		wOK=new Button(shell, SWT.PUSH);
 		wOK.setText(BaseMessages.getString(PKG, "System.Button.OK")); //$NON-NLS-1$
-		wVars=new Button(shell, SWT.PUSH);
-		wVars.setText(BaseMessages.getString(PKG, "ScriptValuesDialogMod.GetVariables.Button")); //$NON-NLS-1$
-		wTest=new Button(shell, SWT.PUSH);
-		wTest.setText(BaseMessages.getString(PKG, "ScriptValuesDialogMod.TestScript.Button")); //$NON-NLS-1$
+		//wVars=new Button(shell, SWT.PUSH);
+		//wVars.setText(BaseMessages.getString(PKG, "ScriptValuesDialogMod.GetVariables.Button")); //$NON-NLS-1$
 		wCancel=new Button(shell, SWT.PUSH);
 		wCancel.setText(BaseMessages.getString(PKG, "System.Button.Cancel")); //$NON-NLS-1$
 		wConsole=new Button(shell, SWT.PUSH);
@@ -522,7 +526,6 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 		// Add listeners
 		lsCancel   = new Listener() { public void handleEvent(Event e) { cancel();          } };
 		//lsGet      = new Listener() { public void handleEvent(Event e) { get();             } };
-		lsTest     = new Listener() { public void handleEvent(Event e) { newTest(); } };
 		lsConsole     = new Listener() { public void handleEvent(Event e) { newConsole(); } };
 		lsVars     = new Listener() { public void handleEvent(Event e) { test(true, true);  } };
 		lsOK       = new Listener() { public void handleEvent(Event e) { ok();              } };
@@ -531,9 +534,8 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 
 		wCancel.addListener(SWT.Selection, lsCancel);
 		//wGet.addListener   (SWT.Selection, lsGet   );
-		wTest.addListener (SWT.Selection, lsTest  );
 		wConsole.addListener (SWT.Selection, lsConsole  );
-		wVars.addListener  (SWT.Selection, lsVars  );
+		//wVars.addListener  (SWT.Selection, lsVars  );
 		wOK.addListener    (SWT.Selection, lsOK    );
 		wTree.addListener(SWT.MouseDoubleClick, lsTree);
 		
