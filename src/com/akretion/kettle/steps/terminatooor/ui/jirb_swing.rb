@@ -5,12 +5,12 @@ require 'irb/completion'
 if File.directory? File.dirname(__FILE__) + '/custom_ruby_libs' #in case jruby-ooor is launched from the TerminatOOOR plugin directory:
   $:.unshift File.dirname(__FILE__) + '/custom_ruby_libs/lib'
   ENV['GEM_HOME'] = File.dirname(__FILE__) + '/custom_ruby_libs'
-elsif File.directory? File.dirname(__FILE__) + '/../plugins/steps/termintatooor/custom_ruby_libs' #in case it's launched from Kettle libext:
-  $:.unshift File.dirname(__FILE__) + '/../plugins/steps/termintatooor/custom_ruby_libs/lib'
-  ENV['GEM_HOME'] = File.dirname(__FILE__) + '/../plugins/steps/termintatooor/custom_ruby_libs'
+elsif File.directory? File.dirname(__FILE__) + '/../plugins/steps/terminatooor/custom_ruby_libs' #in case it's launched from Kettle libext:
+  $:.unshift File.dirname(__FILE__) + '/../plugins/steps/terminatooor/custom_ruby_libs/lib'
+  ENV['GEM_HOME'] = File.dirname(__FILE__) + '/../plugins/steps/terminatooor/custom_ruby_libs'
 else
-  $:.unshift File.dirname(__FILE__) + '/plugins/steps/termintatooor/custom_ruby_libs/lib'
-  ENV['GEM_HOME'] = File.dirname(__FILE__) + '/plugins/steps/termintatooor/custom_ruby_libs'
+  $:.unshift File.dirname(__FILE__) + '/plugins/steps/terminatooor/custom_ruby_libs/lib'
+  ENV['GEM_HOME'] = File.dirname(__FILE__) + '/plugins/steps/terminatooor/custom_ruby_libs'
 end
 
 require 'rubygems'

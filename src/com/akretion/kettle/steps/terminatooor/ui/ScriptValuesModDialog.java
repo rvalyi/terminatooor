@@ -265,12 +265,12 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 			imageArrowOrange = guiresource.getImage("ui/images/arrowOrange.png");
 			imageInputFields = guiresource.getImage("ui/images/inSmall.png");
 			imageOutputFields = guiresource.getImage("ui/images/outSmall.png");
-			imageActiveScript = guiresource.getImage("plugins/steps/termintatooor/images/faScript.png");
+			imageActiveScript = guiresource.getImage("plugins/steps/terminatooor/images/faScript.png");
 			imageInactiveScript = guiresource.getImage("ui/images/hide-inactive.png");
-			imageActiveStartScript = guiresource.getImage("plugins/steps/termintatooor/images/sScript.png");
-			imageActiveEndScript = guiresource.getImage("plugins/steps/termintatooor/images/edfScript.png");
-			imageDeleteScript = guiresource.getImage("plugins/steps/termintatooor/images/deleteSmall.png");
-			imageAddScript = guiresource.getImage("plugins/steps/termintatooor/images/addSmall.png");
+			imageActiveStartScript = guiresource.getImage("plugins/steps/terminatooor/images/sScript.png");
+			imageActiveEndScript = guiresource.getImage("plugins/steps/terminatooor/images/edfScript.png");
+			imageDeleteScript = guiresource.getImage("plugins/steps/terminatooor/images/deleteSmall.png");
+			imageAddScript = guiresource.getImage("plugins/steps/terminatooor/images/addSmall.png");
 			imageDuplicateScript = guiresource.getImage("ui/images/copySmall.png");
 		}catch(Exception e){
 			imageActiveScript = new Image(parent.getDisplay(), 16, 16);
@@ -325,7 +325,7 @@ public class ScriptValuesModDialog extends BaseStepDialog implements StepDialogI
 		int middle = props.getMiddlePct();
 		int margin = Const.MARGIN;
 
-		imageLogo = guiresource.getImage("plugins/steps/termintatooor/images/ooor_m.jpg");
+		imageLogo = guiresource.getImage("plugins/steps/terminatooor/images/ooor_m.jpg");
 		Label logo=new Label (shell, SWT.LEFT);
 		logo.setSize(134, 55);
 		logo.setImage(imageLogo);
