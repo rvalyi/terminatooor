@@ -3,15 +3,12 @@ require 'irb'
 require 'irb/completion'
 
 if File.directory? File.dirname(__FILE__) + '/custom_ruby_libs' #in case jruby-ooor is launched from the TerminatOOOR plugin directory:
-	puts "AAAAAAA"
   $:.unshift File.dirname(__FILE__) + '/custom_ruby_libs/lib'
   ENV['GEM_HOME'] = File.dirname(__FILE__) + '/custom_ruby_libs'
 elsif File.directory? File.dirname(__FILE__) + '/../plugins/steps/termintatooor/custom_ruby_libs' #in case it's launched from Kettle libext:
-	puts "BBBBBB"
   $:.unshift File.dirname(__FILE__) + '/../plugins/steps/termintatooor/custom_ruby_libs/lib'
   ENV['GEM_HOME'] = File.dirname(__FILE__) + '/../plugins/steps/termintatooor/custom_ruby_libs'
 else
-	puts "CCCCCC"
   $:.unshift File.dirname(__FILE__) + '/plugins/steps/termintatooor/custom_ruby_libs/lib'
   ENV['GEM_HOME'] = File.dirname(__FILE__) + '/plugins/steps/termintatooor/custom_ruby_libs'
 end
