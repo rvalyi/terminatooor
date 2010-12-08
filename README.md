@@ -4,7 +4,7 @@ TerminatOOOR - Brute Force your OpenERP data integration with [OOOR](http://gith
 <table>
     <tr>
         <td><b>BY</b></td>
-        <td><a href="http://www.akretion.com" title="Akretion - open source to spin the world"><img src="http://sites.google.com/a/akretion.com/assetserver/_/rsrc/1276813508598/home/logo.png?height=154&width=320" width="320px" height="154px" /></a></td>
+        <td><a href="http://www.akretion.com" title="Akretion - open source to spin the world"><img src="https://assets2.github.com/img/bab7caac292ea1315f458744409ad69f05409ef2?repo=&url=http://akretion.s3.amazonaws.com/assets/logo.png&path=" width="320px" height="154px" /></a></td>
         <td>
 A JRuby JSR223 intergation of the OOOR OpenERP connector inside the Kettle ETL
         </td>
@@ -54,6 +54,9 @@ we use a split transformation to transform that list of ids as a String into sev
 Gotchas
 ------------
 
+- Beware of Ruby variable names! In Ruby variables cannot be uppercase and cannot have spaces. So if you have such columns names in some Excell/CSV file you want to import,
+you might want to use the "Select Values" Transform step to re-map the columns before entering the "TerminatOOOR" step.
+- Doing loops in Kettle is not so easy, think rather about collecting variables in global Ruby variables, splitting columns values, or read that Kettle documentation [link 1](http://type-exit.org/adventures-with-open-source-bi/2010/11/dealing-with-comma-separated-fields-in-kettle/) or [link 2](http://www.osbi.fr/?p=1736); also look at the samples bundled with TerminatOOOR.
 - It only works with Kettle 4. This is because we wanted to let a chance to Pentaho to refactor in the next version their scripting transfo to support the JSR223 and all Java backed languages, not just Rhino Javascript. All busy they are integrating with SAP or Salesforce, not sure they are smart enough tto figure out how important that is, but in any case we gave them the oppportunity, see our [JRipple patch version of their scripting step](http://github.com/rvalyi/jripple)
 - You should put the jruby-ooor jar (JRuby + basic gems + last OOOR gem bundled) inside your Kettle libext directory otherwise, for strange reasons, the JRuby interpreter will not be found (sounds like a classloader issue).
 - If you get an error such as "Too many open files" after doing a lot of OpenERP request (large synchro), then it's because for some strange reason the JRuby XML/RPC client will open a lot of sockets, at least when used within the JSR223 (not sure if that's a bug, but that's really challenging to find out). You could see that using the lsof command on Linux. An effective workaround is to enable more sockets in your OS settings. On Linux, you can edit the /etc/security/limits.conf files and just before the last line, you write: "* - nofile 65535" without quotes. Then restart the PC. After that, should have no "too many open files" issues anymore.
