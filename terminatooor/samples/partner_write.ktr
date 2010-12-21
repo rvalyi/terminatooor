@@ -93,7 +93,7 @@ end
         <jsScript_name>Item_0</jsScript_name>
         <jsScript_script>require &apos;rubygems&apos;
 require &apos;ooor&apos;
-Ooor.new({:url =&gt; &apos;http:&#47;&#47;localhost:8089&#47;xmlrpc&apos;, :database =&gt; &apos;trunk_project&apos;, :username =&gt; &apos;admin&apos;, :password =&gt; &apos;admin&apos;})
+Ooor.new({:url =&gt; &apos;http:&#47;&#47;localhost:8069&#47;xmlrpc&apos;, :database =&gt; &apos;trunk_project&apos;, :username =&gt; &apos;admin&apos;, :password =&gt; &apos;admin&apos;})
 
 </jsScript_script>
       </jsScript>    </jsScripts>    <fields>    </fields>     <cluster_schema/>
