@@ -40,11 +40,11 @@ But on the good news side, we promiss you that you won't regret the first Termin
 We will update the documentation about the 'new way' to use TerminatOOOR.
 But in short, from TerminatOOOR2 and above, you should actually:
 
-1) get the fantastic "Ruby Scripting for Kettle" by Slawomir Chodnicki http://type-exit.org/adventures-with-open-source-bi/kettle-plugins/ruby-scripting-plugin/
-2) learn that great plugin using the provided Samples and learning the basics of Ruby (like 4 hours not more)
-2) get the OOOR gem and dependencies installed in the gem directory of that plugin. This can easily be done by downloading the last TerminatOOOR zip here or using the great kettle_connector extra addons for OpenERP that comes with an installer that will wire all pieces together for you automatically.
-3) Enjoy!
-4) Learn how to dominate all the kettle_connector trick for a fast an seamless OpenERP and Kettle integration.
+*  get the fantastic "Ruby Scripting for Kettle" by Slawomir Chodnicki http://type-exit.org/adventures-with-open-source-bi/kettle-plugins/ruby-scripting-plugin/
+*  learn that great plugin using the provided Samples and learning the basics of Ruby (like 4 hours not more)
+*  get the OOOR gem and dependencies installed in the gem directory of that plugin. This can easily be done by downloading the last TerminatOOOR zip here or using the great kettle_connector extra addons for OpenERP that comes with an installer that will wire all pieces together for you automatically.
+*  Enjoy!
+*  Learn how to dominate all the kettle_connector trick for a fast an seamless OpenERP and Kettle integration.
 
 Doc coming, sorry for the delay guys, we are making our very best.
 
