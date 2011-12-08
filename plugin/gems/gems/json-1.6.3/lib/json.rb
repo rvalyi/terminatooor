@@ -56,7 +56,7 @@ module JSON
 
   begin
     require 'json/ext'
-  rescue RuntimeError
+  rescue LoadError, RuntimeError
     require 'json/pure'
   end
 end
