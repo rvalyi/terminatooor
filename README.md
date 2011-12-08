@@ -27,7 +27,8 @@ How?
 Until recently we have been forking the original Mozilla Rhino Javascript plugin for Kettle to support many JVM languages through the JSR-223 specificaion. Of course the language of interrest was JRuby, which was allowing us to run the OOOR OpenERP Ruby
 connector right inside the ETL data flow.
 
-Those were the early epic days of the TerminatOOOR technology. We never have been proud of the initial legacy code inherited here from the original Kettle Rhino plugin but the thing is: it was working. But this was without counting on the excellent
+Those were the early epic days of the TerminatOOOR technology. We never have been proud of the initial legacy code inherited here from the original Kettle Rhino plugin but the thing is: it was working as you can see on [this old 2010
+screencast](http://www.youtube.com/watch?v=gH4AN5p9YKI). But this was without counting on the excellent
 work from Slawomir Chodnicki who had the courage to re-start a full clean JRuby connector for Kettle. In order to benefit from the extended power of JRuby, Slawomir used the "RedBridge" Java integration framework instead of the JSR-223, which means
 we have extra capabilities but won't run other JVM langages such as Jython. You could still see that old version in the old branch.
 
