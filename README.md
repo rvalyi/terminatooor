@@ -40,4 +40,4 @@ installation steps and we would miss a large part of our audience. This is the r
 Using it / Complete documentation
 ------------
 
-You should read the [complete documentation](http://www.akretion.com/en/products-and-services/openerp-kettle-bi-connector)
+You should read the [complete documentation](http://www.akretion.com/en/products-and-services/openerp-kettle-bi-connector-terminatooor)
