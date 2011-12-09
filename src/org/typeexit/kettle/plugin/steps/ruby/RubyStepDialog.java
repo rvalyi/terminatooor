@@ -214,6 +214,8 @@ public class RubyStepDialog extends BaseStepDialog implements StepDialogInterfac
 
 	private TextVar wGemHome;
 
+    private Image imageLogo=null;
+
 	public RubyStepDialog(Shell parent, Object in, TransMeta transMeta, String sname) {
 		super(parent, (BaseStepMeta) in, transMeta, sname);
 		input = (RubyStepMeta) in;
@@ -324,12 +326,14 @@ public class RubyStepDialog extends BaseStepDialog implements StepDialogInterfac
 		// start construction
 
 		// Stepname line
-		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText(BaseMessages.getString(PKG, "System.Label.StepName"));
+		wlStepname = new Label(shell, SWT.LEFT);
+//		wlStepname.setText(BaseMessages.getString(PKG, "System.Label.StepName"));
+        imageLogo = guiResource.getImage("plugins/steps/Ruby/images/ooor_m.png");
+        wlStepname.setImage(imageLogo);
 		props.setLook(wlStepname);
 		fdlStepname = new FormData();
 		fdlStepname.left = new FormAttachment(0, 0);
-		fdlStepname.right = new FormAttachment(middle, -margin);
+		fdlStepname.right = new FormAttachment(13, -margin);
 		fdlStepname.top = new FormAttachment(0, margin);
 		wlStepname.setLayoutData(fdlStepname);
 
@@ -338,9 +342,9 @@ public class RubyStepDialog extends BaseStepDialog implements StepDialogInterfac
 		props.setLook(wStepname);
 		wStepname.addModifyListener(lsMod);
 		fdStepname = new FormData();
-		fdStepname.left = new FormAttachment(middle, 0);
+		fdStepname.left = new FormAttachment(13, 0);
 		fdStepname.top = new FormAttachment(0, margin);
-		fdStepname.right = new FormAttachment(100, 0);
+		fdStepname.right = new FormAttachment(31, 0);
 		wStepname.setLayoutData(fdStepname);
 
 		SashForm wSash = new SashForm(shell, SWT.VERTICAL);
@@ -1349,7 +1353,7 @@ public class RubyStepDialog extends BaseStepDialog implements StepDialogInterfac
 		wTopLeft = new Composite(wTop, SWT.NONE);
 		FormLayout topLeftLayout = new FormLayout();
 		topLeftLayout.marginWidth = 0;
-		topLeftLayout.marginHeight = 0;
+		topLeftLayout.marginHeight = 50;
 		wTopLeft.setLayout(topLeftLayout);
 		props.setLook(wTopLeft);
 
