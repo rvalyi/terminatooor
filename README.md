@@ -31,12 +31,13 @@ Those were the early epic days of the TerminatOOOR technology. We never have bee
 screencast](http://www.youtube.com/watch?v=gH4AN5p9YKI). But this was without counting on the excellent
 work from Slawomir Chodnicki who had the courage to re-start a full clean JRuby connector for Kettle. In order to benefit from the extended power of JRuby, Slawomir used the "RedBridge" Java integration framework instead of the JSR-223, which means
 we have extra capabilities but won't run other JVM langages such as Jython. You could still see that old version in the old branch.
+Also it's important to notice that the 1st generation transformations aren't compatible with the new generation. But porting them is pretty straightforward.
 
 As soon as Slawomir proposed his [Ruby-Scripting-for-Kettle](https://github.com/type-exit/Ruby-Scripting-for-Kettle) plugin, we started using it along with the OOOR gem. But the drawback is that average users wouldn't be able to go through all the
 installation steps and we would miss a large part of our audience. This is the reason why we decided to re-package Slawomir plugin here directly with the proper gems like OOOR and JOOOR direcly bundled in.
 
 
-Using it
+Using it / Complete documentation
 ------------
 
-You should read the [complete documentation](https://docs.google.com/a/akretion.com.br/document/d/1KaHO2LlNpqhv7X3jqWlbDrUZEqD5JtK8D5yyCqUtR90/edit?hl=en_US&pli=1)
+You should read the [complete documentation](http://www.akretion.com/en/products-and-services/openerp-kettle-bi-connector)
