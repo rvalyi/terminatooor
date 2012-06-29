@@ -4,7 +4,7 @@ TerminatOOOR - Brute Force your OpenERP data integration with [OOOR](http://gith
 <table>
     <tr>
         <td><b>BY</b></td>
-        <td><a href="http://www.akretion.com" title="Akretion - open source to spin the world"><img src="https://assets2.github.com/img/bab7caac292ea1315f458744409ad69f05409ef2?repo=&url=http://akretion.s3.amazonaws.com/assets/logo.png&path=" width="320px" height="154px" /></a></td>
+        <td><a href="http://www.akretion.com" title="Akretion - open source to spin the world"><img src="http://akretion.s3.amazonaws.com/assets/logo.png" width="320px" height="154px" /></a></td>
         <td>
 A JRuby integration of the OOOR OpenERP connector inside the Kettle ETL
         </td>
