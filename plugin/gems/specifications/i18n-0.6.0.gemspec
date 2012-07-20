@@ -6,13 +6,13 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.3.5") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sven Fuchs", "Joshua Harvey", "Matt Aimonetti", "Stephan Soller", "Saimon Moore"]
-  s.date = "2011-05-21"
+  s.date = "2011-05-22"
   s.description = "New wave Internationalization support for Ruby."
   s.email = "rails-i18n@googlegroups.com"
   s.homepage = "http://github.com/svenfuchs/i18n"
   s.require_paths = ["lib"]
   s.rubyforge_project = "[none]"
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.24"
   s.summary = "New wave Internationalization support for Ruby"
 
   if s.respond_to? :specification_version then

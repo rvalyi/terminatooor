@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.files = ["bin/restclient", "README.rdoc", "history.md"]
   s.homepage = "http://github.com/archiloque/rest-client"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.24"
   s.summary = "Simple HTTP and REST client for Ruby, inspired by microframework syntax for specifying actions."
 
   if s.respond_to? :specification_version then

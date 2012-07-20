@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://onestepback.org"
   s.rdoc_options = ["--title", "Builder -- Easy XML Building", "--main", "README.rdoc", "--line-numbers"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.24"
   s.summary = "Builders for MarkUp."
 
   if s.respond_to? :specification_version then

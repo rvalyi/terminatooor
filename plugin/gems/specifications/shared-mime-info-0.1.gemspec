@@ -8,11 +8,11 @@ Gem::Specification.new do |s|
   s.authors = ["Hank Lords"]
   s.autorequire = "rake"
   s.cert_chain = nil
-  s.date = "2006-09-23"
+  s.date = "2006-09-24"
   s.email = "hanklords@gmail.com"
   s.require_paths = ["lib"]
   s.required_ruby_version = Gem::Requirement.new("> 0.0.0")
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.24"
   s.summary = "Library to guess the MIME type of a file with both filename lookup and magic file detection"
 
   if s.respond_to? :specification_version then

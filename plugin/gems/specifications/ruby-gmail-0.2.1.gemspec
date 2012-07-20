@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.post_install_message = "\n\e[34mIf ruby-gmail saves you TWO hours of work, want to compensate me for, like, a half-hour?\nSupport me in making new and better gems:\e[0m \e[31;4mhttp://pledgie.com/campaigns/7087\e[0m\n\n"
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.24"
   s.summary = "A Rubyesque interface to Gmail, with all the tools you'll need."
 
   if s.respond_to? :specification_version then
