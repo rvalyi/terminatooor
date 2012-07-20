@@ -1,0 +1,6 @@
+Name;Address;City;Phone;Website;E-mail;Country
+Client1;client_address_1;Client_city_1;0102030405;www.website1.com;Client1@gmail.com;Belgium
+Client2;client_address_2;Client_city_2;0102030405;www.website1.com;Client1@gmail.com;France
+Client3;client_address_3;Client_city_3;0102030405;www.website1.com;Client1@gmail.com;Brazil
+Client4;client_address_4;Client_city_4;0102030405;www.website1.com;Client1@gmail.com;United States
+Client5;client_address_5;Client_city_5;0102030405;www.website1.com;Client1@gmail.com;China
