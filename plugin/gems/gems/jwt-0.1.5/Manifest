@@ -1,0 +1,5 @@
+Rakefile
+lib/jwt.rb
+spec/helper.rb
+spec/jwt_spec.rb
+Manifest

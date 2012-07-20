@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+
+require 'webrick'
+require 'httpauth/digest'
+require 'yaml'
+
+include WEBrick
+
+s = HTTPServer.new :Port => 2000, :AccessLog => [[File.open('/dev/null', 'w'), AccessLog::COMMON_LOG_FORMAT],
+  [File.open('/dev/null', 'w'), AccessLog::REFERER_LOG_FORMAT]]
+
+class AuthenticationServlet < HTTPServlet::AbstractServlet
+  include HTTPAuth::Digest
+  def do_GET(request, response)
+    puts '-'*79
+    puts "request: Authorization: " + (request['Authorization'] || '')
+    
+    credentials = Credentials.from_header(request['Authorization']) unless request['Authorization'].nil?
+    if !credentials.nil? and credentials.validate :password => 'secret', :method => 'GET'
+      response.status = 200
+      auth_info = AuthenticationInfo.from_credentials credentials
+      response['Authentication-Info'] = auth_info.to_header
+      response['Content-Type'] = 'text/plain; charset=utf-8'
+      response.body  = 'You are authorized'
+      puts "response: Authentication-Info: " + response['Authentication-Info']
+    else
+      if credentials
+        puts '[!] FAILED: ' + credentials.reason
+      else
+        puts '[!] FAILED: No credentials specified'
+      end
+      response.status = 401
+      challenge = Challenge.new :realm => 'admin@httpauth.example.com', :qop => ['auth']
+      response['WWW-Authenticate'] = challenge.to_header
+      response['Content-Type'] = 'text/plain; charset=utf-8'
+      response.body  = 'You are not authorized'
+      puts "response: WWW-Authenticate: " + response['WWW-Authenticate']
+    end
+  end
+end
+
+puts "\n>>> Open http://localhost:2000/ and login with password 'secret', any username should work\n\n"
+s.mount '/', AuthenticationServlet
+trap('INT') { s.shutdown }
+s.start

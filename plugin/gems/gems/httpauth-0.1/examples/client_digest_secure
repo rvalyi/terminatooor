@@ -1,0 +1,132 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+
+require 'rubygems' rescue LoadError
+require 'uri'
+require 'rfuzz/client'
+require 'httpauth/digest'
+
+SALT = 'My very very secret salt'
+
+class AuthenticationCache
+  
+  def initialize
+    @uri = nil
+    @credentials = nil
+  end
+  
+  def set_credentials_for(uri, credentials)
+    @uri = get_new_uri(@uri, uri)
+    @credentials = credentials
+  end
+  
+  def get_credentials
+    @credentials
+  end
+  
+  def update_usage_for(uri, nextnonce=nil)
+    if nextnonce
+      @credentials.nc = nextnonce
+    else
+      @credentials.nc += 1
+    end
+  end
+  
+  protected
+  
+  # Is uri1 more general than uri2
+  def more_general_uri?(uri1, uri2)
+    ua1 = uri1.nil? ? [] : uri1.split('/')
+    ua2 = uri2.nil? ? [] : uri2.split('/')
+    ua1.each_with_index do |p, i|
+      return false unless ua2[i] == p
+    end
+    true
+  end
+  
+  def get_new_uri(uri1, uri2)
+    if more_general_uri?(uri1, uri2)
+      uri1
+    else
+      uri2
+    end
+  end
+end
+
+class AuthenticatedClient
+  include HTTPAuth::Digest
+  
+  def initialize(host, port)
+    @client = RFuzz::HttpClient.new host, port
+    @cache = AuthenticationCache.new
+    @username = nil
+    @password = nil
+  end
+  
+  def get_credentials_from_user
+    if @username.nil?
+      print 'Username: '
+      @username = $stdin.gets.strip
+    end
+    if @password.nil?
+      print 'Password: '
+      @password = $stdin.gets.strip
+    end
+    [@username, @password]
+  end
+  
+  # Get a resource from the server
+  def get(resource)
+    uri = URI.parse resource
+    
+    # If credentials were stored, use them. Otherwise do a normal get
+    credentials = @cache.get_credentials
+    unless credentials.nil?
+      puts "sending credentials: #{credentials.to_header}"
+      response = @client.get resource, :head => {"Authorization" => credentials.to_header}
+    else
+      response = @client.get resource
+    end
+    # If response was 401, retry with authentication
+    if response.http_status == '401' and !response['WWW_AUTHENTICATE'].nil?
+      puts "got challenge: #{response['WWW_AUTHENTICATE']}"
+      challenge = Challenge.from_header(response['WWW_AUTHENTICATE'])
+      (stale = challenge.stale) rescue NoMethodError
+      unless stale
+        username, password = get_credentials_from_user
+      else
+        username = credentials.username
+        password = credentials.password
+      end
+      credentials = Credentials.from_challenge(challenge,
+        {:uri => resource, :username => username, :password => password, :method => 'GET'}
+      )
+      puts "sending credentials: #{credentials.to_header}"
+      @cache.set_credentials_for uri.path, credentials
+      response = @client.get resource, :head => {"Authorization" => credentials.to_header}
+    end
+    # If the server sends authentication info use the information for the next request
+    if response['AUTHENTICATION_INFO']
+      puts "got authentication-info: #{response['AUTHENTICATION_INFO']}"
+      auth_info = AuthenticationInfo.from_header(response['AUTHENTICATION_INFO'])
+      @cache.update_usage_for uri.path, auth_info.h[:nextnonce]
+    else
+      @cache.update_usage_for uri.path
+    end
+    response
+  end
+end
+
+if $0 == __FILE__
+  unless ARGV.length == 2
+    puts <<-EOT
+Usage: client_digest_secure get <url>
+    EOT
+    exit 0
+  end
+  uri = URI.parse ARGV[1]
+  client = AuthenticatedClient.new uri.host, uri.port
+  response = client.send ARGV[0].intern, uri.query ? "#{uri.path}&#{uri.query}" : uri.path
+  puts response.http_body
+end
