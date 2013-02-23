@@ -4,4 +4,6 @@ dist
 testdist
 testclasses
 package
+plugin/gems/gems
+plugin/gems/specifications
 .DS_Store
