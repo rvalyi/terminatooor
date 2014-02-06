@@ -111,9 +111,9 @@ public class RubyStepSyntaxHighlighter {
 		lexer = new RubyYaccLexer();
 
 		ParserSupport parserSupport = new ParserSupport();
-                RubyStepMeta meta = new RubyStepMeta();
-                Ruby runtime = RubyStepFactory.createScriptingContainer(true,meta.getRubyVersion()).getProvider().getRuntime();
-                ParserConfiguration parserConfig = new ParserConfiguration(runtime, 0, true, CompatVersion.BOTH);
+    RubyStepMeta meta = new RubyStepMeta();
+    Ruby runtime = RubyStepFactory.createScriptingContainer(true,meta.getRubyVersion()).getProvider().getRuntime();
+		ParserConfiguration parserConfig = new ParserConfiguration(runtime, 0, true, CompatVersion.BOTH);
 		parserSupport.setConfiguration(parserConfig);
 		parserSupport.setResult(new RubyParserResult());
 		parserSupport.setWarnings(new RubyWarnings(null));
