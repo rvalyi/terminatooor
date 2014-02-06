@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.jruby.RubyArray;
@@ -71,6 +72,11 @@ public class SimpleExecutionModel implements ExecutionModel {
 			data.forcedHalt = false;
 
 			data.container = RubyStepFactory.createScriptingContainer(true, meta.getRubyVersion());
+
+      List<String> paths = new ArrayList<String>();
+      String newPath = step.environmentSubstitute("${RUBY_LOAD_PATH}");
+      paths.add(newPath);
+      data.container.setLoadPaths(paths); 
 
 			data.runtime = data.container.getProvider().getRuntime();
 

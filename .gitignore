@@ -4,6 +4,8 @@ dist
 testdist
 testclasses
 package
+<<<<<<< HEAD
 plugin/gems/gems
 plugin/gems/specifications
 .DS_Store
+.*.swp
